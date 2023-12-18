@@ -1,0 +1,33 @@
+
+.historic {
+    width: 100%;
+}
+
+.historic ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.historic ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-black);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.historic ul li span {
+    font-weight: 700;
+}
+
+.historic ul li h5 {
+    font-weight: 700;
+    color: var(--color-red);
+}
+
+.historic p {
+    color: #909090;
+}
