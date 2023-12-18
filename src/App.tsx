@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import { IconX } from '@tabler/icons-react';
 import { v4 as uuidv4 } from 'uuid';
+import banner from './assets/logo.jpeg';
 
 function App() {
   const { launch, setLaunch } = useLaunch();
@@ -114,6 +115,7 @@ function App() {
                   <ul>
                     {data.map((item) =>
                       <li key={item.id}>
+                        <img src={banner} alt="Banner" />
                         <h2 className={styles.subTitle}>Cliente: <strong>{item.name}</strong></h2>
                         <span>Data do lançamento: <strong>{item.date}</strong></span>
                         <p>Valor da mão de obra: <strong>{format(item.valueHandConstructions)}</strong></p>
