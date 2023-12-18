@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react'
-import generatePDF, { Margin, Resolution } from 'react-to-pdf';
+import generatePDF from 'react-to-pdf';
 import useLaunch from './hooks/useLaunch';
 import styles from './App.module.css';
 import Part from './models/Part';
@@ -7,6 +7,7 @@ import { format } from './utils/FormatPrice';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import { IconX } from '@tabler/icons-react';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const { launch, setLaunch } = useLaunch();
@@ -30,7 +31,7 @@ function App() {
       return;
     }
     const part = {
-      id: String(partsList.length + 1),
+      id: uuidv4(),
       title: parts,
       value: parseFloat(valueParts)
     }
@@ -50,7 +51,7 @@ function App() {
     }
     const valueHandFormat = valueHand === '' ? 0 : parseFloat(valueHand);
     const launchObj = {
-      id: String(launch.length + 1),
+      id: uuidv4(),
       name: name,
       valueHandConstructions: valueHandFormat,
       date: date,
@@ -76,30 +77,6 @@ function App() {
     const partIndex = partsList.findIndex((part) => part.id === id);
     partsList.splice(partIndex, 1);
     setPartsList([...partsList]);
-  }
-
-  const options = {
-    // default is `save`
-    method: 'open',
-    resolution: Resolution.HIGH,
-    page: {
-      // margin is in MM, default is Margin.NONE = 0
-      margin: Margin.MEDIUM,
-      // default is 'A4'
-      format: 'A4',
-      // default is 'portrait'
-      orientation: 'portrait',
-    },
-    overrides: {
-      // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
-      pdf: {
-        compress: true
-      },
-      // see https://html2canvas.hertzen.com/configuration for more options
-      canvas: {
-        useCORS: true
-      }
-    },
   }
 
   const getTargetElement = () => document.getElementById('content-id');
@@ -188,7 +165,7 @@ function App() {
             <h5>Valor total: <strong>{format(totalPrice)}</strong></h5>
           </section >
           <div className={styles.buttons}>
-            <button className={styles.btnPdf} onClick={() => generatePDF(getTargetElement, { filename: 'nota.pdf' }, options)}>Gerar PDF</button>
+            <button className={styles.btnPdf} onClick={() => generatePDF(getTargetElement, { filename: 'nota.pdf' })}>Gerar PDF</button>
           </div>
         </section>
       </div>

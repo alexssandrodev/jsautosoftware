@@ -1,5 +1,4 @@
-import Launch from '@/models/Launch';
-import generatePDF, { Resolution, Margin } from 'react-to-pdf';
+import Launch from "../../models/Launch";
 
 interface CreatePdfProps {
     launch: Launch[]

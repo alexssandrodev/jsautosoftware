@@ -1,8 +1,7 @@
 'use client';
 
-import Launch from "@/models/Launch";
-import Part from "@/models/Part";
 import { useState } from "react";
+import Launch from "../models/Launch";
 
 function useLaunch() {
     const dataStorage = JSON.parse(localStorage.getItem('launchs') || '[]');

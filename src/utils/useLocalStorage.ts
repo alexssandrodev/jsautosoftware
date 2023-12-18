@@ -1,5 +1,5 @@
-import Launch from "@/models/Launch";
-import Part from "@/models/Part";
+import Launch from "../models/Launch";
+import Part from "../models/Part";
 
 export function setLocalStorageLaunchs(key: string, value: Launch[]) {
     const data =  JSON.stringify(value)

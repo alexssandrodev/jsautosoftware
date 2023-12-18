@@ -246,3 +246,8 @@ main {
     border-radius: 1rem;
 }
 
+.partsList li h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+

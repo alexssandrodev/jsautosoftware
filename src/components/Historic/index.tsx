@@ -1,9 +1,7 @@
 'use client';
-import Link from 'next/link';
-import styles from './Historic.module.css';
-import useLaunch from '@/app/hooks/useLaunch';
 import { IconTrash } from '@tabler/icons-react';
-import { useEffect } from 'react';
+import useLaunch from '../../hooks/useLaunch';
+import styles from './Historic.module.css';
 
 function Historic() {
     const { launch, setLaunch } = useLaunch();
@@ -31,7 +29,7 @@ function Historic() {
     }
 
     function getTotal(name: string) {
-        const newLaunch = launch.filter((item) => item.name === name);
+        const newLaunch = launch.filter((item: any) => item.name === name);
         let total = 0;
         for (const price of newLaunch) {
             total += parseFloat(price.valueParts);
@@ -46,7 +44,7 @@ function Historic() {
                 <p>Não exite nenhum lançamento.</p>
             )}
             <ul>
-                {launch.map((item, index) => (
+                {launch.map((item: any, index: number) => (
                     <li key={item.id} className={`${index % 2 === 0 && 'bg-gray-200'}`}>
                         <h3>{item.name}</h3>
                         <span>{item.date}</span>
