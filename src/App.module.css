@@ -36,6 +36,11 @@ main {
     color: var(--color-black);
 }
 
+.removeLaunch {
+    color: var(--color-red);
+    cursor: pointer;
+}
+
 .create h2 {
     color: var(--color-black);
     font-weight: 700;

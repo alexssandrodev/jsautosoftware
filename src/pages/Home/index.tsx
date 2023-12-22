@@ -5,9 +5,9 @@ import styles from '../../App.module.css';
 import { format } from '../../utils/FormatPrice';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
-import { IconX } from '@tabler/icons-react';
+import { IconTrash, IconX } from '@tabler/icons-react';
 import { v4 as uuidv4 } from 'uuid';
-import banner from '../../assets/banner2.jpg';
+import banner from '../../assets/logo.jpeg';
 
 
 function Home() {
@@ -22,8 +22,6 @@ function Home() {
     const [date, setDate] = useState<string>('');
     const [parts, setPart] = useState<string>('');
     const [valueParts, setValuePart] = useState<string>('');
-
-    console.log(`Histórico de preços: ${totalHistoricPrice}`);
 
     useEffect(() => {
         localStorage.setItem('launchs', JSON.stringify(launch));
@@ -92,6 +90,12 @@ function Home() {
         const partIndex = partsList.findIndex((part) => part.id === id);
         partsList.splice(partIndex, 1);
         setPartsList([...partsList]);
+    }
+
+    function removeLaunch(id: string) {
+        const newLaunchs = launch.filter((item) => item.id !== id);
+        setLaunch(newLaunchs);
+        localStorage.setItem('launchs', JSON.stringify(newLaunchs));
     }
 
     const getTargetElement = () => document.getElementById('content-id');
@@ -197,6 +201,7 @@ function Home() {
                             <li key={item.id}>
                                 <p>{item.name}</p>
                                 <span>{item.date}</span>
+                                <p className={styles.removeLaunch} onClick={() => removeLaunch(item.id)}>{<IconTrash />}</p>
                                 {/* <h4>{totalPriceHistoric()}</h4> */}
                             </li>
                         ))}
