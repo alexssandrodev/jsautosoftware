@@ -78,14 +78,6 @@ function Home() {
         setTotalPrice(total);
     }
 
-    // function totalPriceHistoric() {
-    //     // let total = 0;
-    //     // const newHistoric = partsList.filter((item) => item.name !== name);
-    //     const price = totalHistoricPrice.reduce((acc, value) => acc + parseFloat(value), 0);
-
-    //     return price;
-    // }
-
     function removePart(id: string) {
         const partIndex = partsList.findIndex((part) => part.id === id);
         partsList.splice(partIndex, 1);
