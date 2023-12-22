@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import Launch from "../models/Launch";
+import Part from "../models/Part";
 
 function useLaunch() {
     const dataStorage = JSON.parse(localStorage.getItem('launchs') || '[]');
-    // const auxNameStorage = JSON.parse(localStorage.getItem('aux-name') || '[]');
+    // const partsStorage = JSON.parse(localStorage.getItem('parts') || '[]');
     
     const [launch, setLaunch] = useState<Launch[]>(dataStorage);
-    // const [auxName, setAuxName] = useState<string[]>(auxNameStorage);
+    const [partsList, setPartsList] = useState<Part[]>([]);
 
     return {
         launch,
         setLaunch,
-        // auxName,
-        // setAuxName
+        partsList,
+        setPartsList
     }
 }
 

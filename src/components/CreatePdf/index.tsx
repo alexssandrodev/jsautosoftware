@@ -16,7 +16,6 @@ function CreatePdf(props: CreatePdfProps) {
                                 <li key={item.id}>
                                     <h2>Cliente: {item.name}</h2>
                                     <span>Data do lançamento: {item.date}</span>
-                                    <p>Valor da mão de obra: {item.valueHandConstructions}</p>
                                 </li>
                             ))}
                         </ul>

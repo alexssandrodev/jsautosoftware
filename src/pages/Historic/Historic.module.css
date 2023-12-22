@@ -6,7 +6,8 @@
 .historic ul {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    width: 100%;
 }
 
 .historic ul li {
@@ -19,6 +20,10 @@
     margin-bottom: 1rem;
 }
 
+.bgLi {
+    background-color: #e0dfdf;
+}
+
 .historic ul li span {
     font-weight: 700;
 }
@@ -28,6 +33,19 @@
     color: var(--color-red);
 }
 
+.historic ul li button {
+    background-color: transparent;
+    color: var(--color-red);
+    cursor: pointer;
+}
+
 .historic p {
     color: #909090;
+}
+
+.flex {
+    max-width: 130rem;
+    width: 100%;
+    display: flex;
+    gap: 2rem;
 }
