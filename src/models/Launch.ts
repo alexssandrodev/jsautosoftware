@@ -1,3 +1,5 @@
+import Part from "./Part"
+
 export default interface Launch {
     id: string
     idPart: number
@@ -6,5 +8,6 @@ export default interface Launch {
     date: string
     parts: string
     valueParts: string
+    partsList: Part[]
 }
 

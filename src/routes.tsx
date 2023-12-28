@@ -9,7 +9,7 @@ function AppRoutes() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/historic" element={<Historic />} />
-                <Route path="/details" element={<Details />} />
+                <Route path="/details/:id" element={<Details />} />
             </Routes>
         </BrowserRouter>
      );

@@ -36,6 +36,12 @@ main {
     color: var(--color-black);
 }
 
+.historic .icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .removeLaunch {
     color: var(--color-red);
     cursor: pointer;

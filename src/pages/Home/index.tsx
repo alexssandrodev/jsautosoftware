@@ -1,13 +1,13 @@
 import { FormEvent, useEffect, useState } from 'react'
-import generatePDF from 'react-to-pdf';
 import useLaunch from '../../hooks/useLaunch';
 import styles from '../../App.module.css';
 import { format } from '../../utils/FormatPrice';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
-import { IconTrash, IconX } from '@tabler/icons-react';
+import { IconInfoCircle, IconTrash, IconX } from '@tabler/icons-react';
 import { v4 as uuidv4 } from 'uuid';
-import banner from '../../assets/logo.jpeg';
+import { Link } from 'react-router-dom';
+import CreatePdf from '../../components/CreatePdf';
 
 
 function Home() {
@@ -61,7 +61,8 @@ function Home() {
             // valueHandConstructions: valueHandFormat,
             date: date,
             parts: parts,
-            valueParts: valueParts
+            valueParts: valueParts,
+            partsList: [...partsList]
         }
         setLaunch([...launch, launchObj]);
         setData([launchObj]);
@@ -90,7 +91,7 @@ function Home() {
         localStorage.setItem('launchs', JSON.stringify(newLaunchs));
     }
 
-    const getTargetElement = () => document.getElementById('content-id');
+    // const getTargetElement = () => document.getElementById('content-id');
 
     return (
         <main>
@@ -126,35 +127,9 @@ function Home() {
                                 <button className={styles.createBtn}>Salvar</button>
                             </div>
 
-                            <div>
-                                <div className={styles.dataPdf} id="content-id">
-                                    <ul>
-                                        {data.map((item) =>
-                                            <li key={item.id}>
-                                                <img src={banner} alt="Banner" />
-                                                <h2 className={styles.subTitle}>Cliente: <strong>{item.name}</strong></h2>
-                                                <span>Data do lançamento: <strong>{item.date}</strong></span>
-                                                {/* <p>Valor da mão de obra: <strong>{format(item.valueHandConstructions)}</strong></p> */}
-                                            </li>
-                                        )}
-                                    </ul>
-                                    <div className={`${styles.border}`}>
-                                        <ul>
-                                            {partsList.map((part) => (
-                                                <li key={part.id}>
-                                                    <div className={styles.flex}>
-                                                        <p>{part.title}</p>
-                                                        <span>{format(part.value)}</span>
-                                                    </div>
-                                                </li>
-                                            ))}
-                                            <h5>Valor total: <strong className='text-red-700'>{format(totalPrice)}</strong></h5>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </form>
+                    <CreatePdf data={data} partsList={partsList} totalPrice={totalPrice} />
                     <div className={`${styles.partForm}`}>
                         <div className={`${styles.flex}`}>
                             <div className={styles.inputForm}>
@@ -182,9 +157,10 @@ function Home() {
                     <section className={styles.parts}>
                         <h5>Valor total: <strong>{format(totalPrice)}</strong></h5>
                     </section >
-                    <div className={styles.buttons}>
+                    {/* <div className={styles.buttons}>
                         <button className={styles.btnPdf} onClick={() => generatePDF(getTargetElement, { filename: 'nota.pdf' })}>Gerar PDF</button>
-                    </div>
+                    </div> */}
+                        
                 </section>
                 <section className={styles.historic}>
                     <h3>Histórico de lançamentos</h3>
@@ -193,8 +169,10 @@ function Home() {
                             <li key={item.id}>
                                 <p>{item.name}</p>
                                 <span>{item.date}</span>
-                                <p className={styles.removeLaunch} onClick={() => removeLaunch(item.id)}>{<IconTrash />}</p>
-                                {/* <h4>{totalPriceHistoric()}</h4> */}
+                                <div className={styles.icons}>
+                                    <Link to={`/details/${item.id}`}><p><IconInfoCircle /></p></Link>
+                                    <p className={styles.removeLaunch} onClick={() => removeLaunch(item.id)}>{<IconTrash />}</p>
+                                </div>
                             </li>
                         ))}
                     </ul>
