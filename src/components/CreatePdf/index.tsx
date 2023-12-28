@@ -3,7 +3,7 @@ import Part from "../../models/Part";
 import styles from '../../App.module.css';
 import { format } from "../../utils/FormatPrice";
 import generatePDF from 'react-to-pdf';
-import banner from '../../assets/logo.jpeg';
+import banner from '../../assets/logo.jpg';
 
 interface CreatePdfProps {
     data: Launch[]
