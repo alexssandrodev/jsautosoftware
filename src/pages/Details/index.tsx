@@ -49,6 +49,7 @@ function Details() {
         getLaunch();
         getTotalPrice();
         getPartsList();
+        
     }, [id]);
 
     return (
