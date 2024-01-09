@@ -18,8 +18,12 @@ function Home() {
     const [isSend, setIsSend] = useState<boolean>(false);
 
     const [name, setName] = useState<string>('');
-    // const [valueHand, setValueHand] = useState<string>('');
+    const [cpf, setCpf] = useState<string>('');
+    const [model, setModel] = useState<string>('');
+    const [kilometer, setKilometer] = useState<string>('');
+    const [plate, setPlate] = useState<string>('');
     const [date, setDate] = useState<string>('');
+    const [tel, setTel] = useState<string>('');
     const [parts, setPart] = useState<string>('');
     const [valueParts, setValuePart] = useState<string>('');
 
@@ -53,15 +57,16 @@ function Home() {
         if (name === '' && date === '' && parts === '' && valueParts === '') {
             return;
         }
-        // const valueHandFormat = valueHand === '' ? 0 : parseFloat(valueHand);
+        
         const launchObj = {
             id: uuidv4(),
-            idPart: launch.length + 1,
             name: name,
-            // valueHandConstructions: valueHandFormat,
             date: date,
-            parts: parts,
-            valueParts: valueParts,
+            tel: tel,
+            cpf: cpf,
+            model: model,
+            kilometer: kilometer,
+            plate: plate,
             partsList: [...partsList]
         }
         setLaunch([...launch, launchObj]);
@@ -91,8 +96,6 @@ function Home() {
         localStorage.setItem('launchs', JSON.stringify(newLaunchs));
     }
 
-    // const getTargetElement = () => document.getElementById('content-id');
-
     return (
         <main>
             <Header />
@@ -107,18 +110,38 @@ function Home() {
                         </div>
                     )}
                     <form action="" method="post" onSubmit={(e) => addLaunch(e)} >
+                        <div className={styles.flex}>
+                            <div className={styles.inputForm}>
+                                <label htmlFor="name">Nome do cliente</label>
+                                <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder='Nome do cliente' />
+                            </div>
+                            <div className={styles.inputForm}>
+                                <label htmlFor="name">CPF</label>
+                                <input type="text" id="name" value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder='CPF' />
+                            </div>
+                        </div>
                         <div className={styles.inputForm}>
-                            <label htmlFor="name">Nome do cliente</label>
-                            <input type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder='Nome do cliente' />
+                            <label htmlFor="tel">Telefone</label>
+                            <input type="text" id="tel" value={tel} onChange={(e) => setTel(e.target.value)} placeholder='Telefone' />
                         </div>
                         <div className={styles.flex}>
-                            {/* <div className={styles.inputForm}>
-                                <label htmlFor="value_hand">Valor da mão de obra</label>
-                                <input type="text" onChange={(e) => setValueHand(e.target.value)} id="value_hand" placeholder='Valor da mão de obra' />
-                            </div> */}
                             <div className={styles.inputForm}>
                                 <label htmlFor="date">Data do lançamentoe</label>
-                                <input type="date" onChange={(e) => setDate(e.target.value)} id="date" placeholder='Nome do cliente' />
+                                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} id="date" placeholder='Data de lançamento' />
+                            </div>
+                            <div className={styles.inputForm}>
+                                <label htmlFor="model">Modelo do veiculo</label>
+                                <input type="text" value={model} onChange={(e) => setModel(e.target.value)} id="model" placeholder='Modelo do veiculo' />
+                            </div>
+                        </div>
+                        <div className={styles.flex}>
+                            <div className={styles.inputForm}>
+                                <label htmlFor="kilometer">Kilometragem do veiculo</label>
+                                <input type="text" value={kilometer} onChange={(e) => setKilometer(e.target.value)} id="kilometer" placeholder='Kilometragem do veiculo' />
+                            </div>
+                            <div className={styles.inputForm}>
+                                <label htmlFor="plate">Placa do veiculo</label>
+                                <input type="text" value={plate} onChange={(e) => setPlate(e.target.value)} id="plate" placeholder='Placa do veiculo' />
                             </div>
                         </div>
 
@@ -134,7 +157,7 @@ function Home() {
                         <div className={`${styles.flex}`}>
                             <div className={styles.inputForm}>
                                 <label htmlFor="part">Peça</label>
-                                <input type="text" onChange={(e) => setPart(e.target.value)} id="part" placeholder='Nome da peçaa' />
+                                <input type="text" onChange={(e) => setPart(e.target.value)} id="part" placeholder='Nome da peça' />
                             </div>
                             <div className={styles.inputForm}>
                                 <label htmlFor="value_part">Valor da peça</label>
@@ -157,10 +180,7 @@ function Home() {
                     <section className={styles.parts}>
                         <h5>Valor total: <strong>{format(totalPrice)}</strong></h5>
                     </section >
-                    {/* <div className={styles.buttons}>
-                        <button className={styles.btnPdf} onClick={() => generatePDF(getTargetElement, { filename: 'nota.pdf' })}>Gerar PDF</button>
-                    </div> */}
-                        
+
                 </section>
                 <section className={styles.historic}>
                     <h3>Histórico de lançamentos</h3>

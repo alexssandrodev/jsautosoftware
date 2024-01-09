@@ -66,3 +66,9 @@
 .parts li p h4 {
     color: var(--color-red);
 }
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}

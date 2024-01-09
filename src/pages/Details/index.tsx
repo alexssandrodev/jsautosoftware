@@ -49,7 +49,7 @@ function Details() {
         getLaunch();
         getTotalPrice();
         getPartsList();
-        
+
     }, [id]);
 
     return (
@@ -62,8 +62,17 @@ function Details() {
                     <ul>
                         {dataLaunch.map((item) => (
                             <li key={item.id}>
-                                <p>Nome do cliente: <strong>{item.name}</strong></p>
+                                <div className={styles.flex}>
+                                    <p>Nome do cliente: <strong>{item.name}</strong></p>
+                                    <p>CPF: {item.cpf}</p>
+                                    <p>Telefone: <strong>{item.tel}</strong></p>
+                                </div>
                                 <span>data do lançamento: <strong>{item.date}</strong></span>
+                                <h5>Modelo do veiculo: {item.model}</h5>
+                                <div className={styles.flex}>
+                                    <p>Kilometragem: {item.kilometer}</p>
+                                    <p>Placa: {item.plate}</p>
+                                </div>
                             </li>
                         ))}
                     </ul>

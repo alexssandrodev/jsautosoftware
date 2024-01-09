@@ -2,12 +2,13 @@ import Part from "./Part"
 
 export default interface Launch {
     id: string
-    idPart: number
     name: string
-    // valueHandConstructions: number
     date: string
-    parts: string
-    valueParts: string
+    tel: string
+    cpf: string
+    model: string
+    kilometer: string
+    plate: string
     partsList: Part[]
 }
 

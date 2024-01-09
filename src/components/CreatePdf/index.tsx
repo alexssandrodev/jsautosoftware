@@ -22,8 +22,13 @@ function CreatePdf({ data, partsList, totalPrice }: CreatePdfProps) {
                         <li key={item.id}>
                             <img src={banner} alt="Banner" />
                             <h2 className={styles.subTitle}>Cliente: <strong>{item.name}</strong></h2>
+                            <p>Telefone: {item.tel}</p>
                             <span>Data do lançamento: <strong>{item.date}</strong></span>
-                            {/* <p>Valor da mão de obra: <strong>{format(item.valueHandConstructions)}</strong></p> */}
+                            <h4>Modelo do veiculo: <strong>{item.model}</strong></h4>
+                            <div className={styles.flex}>
+                                <p>Kilometragem: <strong>{item.kilometer}</strong></p>
+                                <p>Placa: <strong>{item.plate}</strong></p>
+                            </div>
                         </li>
                     )}
                 </ul>
