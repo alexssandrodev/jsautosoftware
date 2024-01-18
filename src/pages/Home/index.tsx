@@ -22,6 +22,7 @@ function Home() {
     const [model, setModel] = useState<string>('');
     const [kilometer, setKilometer] = useState<string>('');
     const [plate, setPlate] = useState<string>('');
+    const [observation, setObservation] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [tel, setTel] = useState<string>('');
     const [parts, setPart] = useState<string>('');
@@ -57,7 +58,7 @@ function Home() {
         if (name === '' && date === '' && parts === '' && valueParts === '') {
             return;
         }
-        
+
         const launchObj = {
             id: uuidv4(),
             name: name,
@@ -67,6 +68,7 @@ function Home() {
             model: model,
             kilometer: kilometer,
             plate: plate,
+            observation: observation,
             partsList: [...partsList]
         }
         setLaunch([...launch, launchObj]);
@@ -143,6 +145,10 @@ function Home() {
                                 <label htmlFor="plate">Placa do veiculo</label>
                                 <input type="text" value={plate} onChange={(e) => setPlate(e.target.value)} id="plate" placeholder='Placa do veiculo' />
                             </div>
+                        </div>
+                        <div className={styles.inputForm}>
+                            <label htmlFor="observation">Observação</label>
+                            <textarea id="observation" value={observation} onChange={(e) => setObservation(e.target.value)} placeholder='Observação...'></textarea>
                         </div>
 
                         <div className={styles.buttons}>

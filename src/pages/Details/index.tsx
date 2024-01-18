@@ -73,6 +73,7 @@ function Details() {
                                     <p>Kilometragem: {item.kilometer}</p>
                                     <p>Placa: {item.plate}</p>
                                 </div>
+                                <p><strong>Observação: </strong>{item.observation}</p>
                             </li>
                         ))}
                     </ul>

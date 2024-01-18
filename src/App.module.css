@@ -72,7 +72,8 @@ main {
 }
 
 .inputForm input,
-.inputForm date {
+.inputForm date,
+.inputForm textarea {
     flex: 1;
     background-color: transparent;
     padding: 1rem;
@@ -88,6 +89,11 @@ main {
 
 .flex .inputForm {
     flex: 1;
+}
+
+.inputForm textarea {
+    resize: none;
+
 }
 
 .buttons {
@@ -178,13 +184,15 @@ main {
 .dataPdf ul {
     display: flex;
     flex-direction: column;
-    background-color: #e8e5e5;
-    border-radius: 1rem;
-    padding: 2rem;
+    /* background-color: #e8e5e5; */
+    /* border-radius: 1rem; */
+    padding: 1rem;
 }
 
-.dataPdf li strong {
-    color: var(--color-red);
+.dataPdf ul li  {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .dataPdf ul li img {
@@ -193,10 +201,10 @@ main {
     border-radius: 1rem;
 }
 
-.border {
+/* .border {
     border-bottom: .1rem solid var(--color-black);
     padding: 2rem;
-}
+} */
 
 .border ul li {
     display: flex;
@@ -205,19 +213,19 @@ main {
     color: var(--color-black);
 }
 
-.border ul li span {
+/* .border ul li span {
     color: var(--color-red);
     font-weight: 700;
-}
+} */
 
 .border ul h5 {
     color: var(--color-black);
     margin-top: .5rem;
 }
 
-.border ul h5 strong {
+/* .border ul h5 strong {
     color: var(--color-red);
-}
+} */
 
 .subTitle {
     font-weight: 700;
@@ -234,10 +242,10 @@ main {
     color: var(--color-black);
 }
 
-.partForm ul li p {
+/* .partForm ul li p {
     color: var(--color-red);
     font-weight: 700;
-}
+} */
 
 .partForm ul li span {
     font-size: 1.2rem;

@@ -29,6 +29,7 @@ function CreatePdf({ data, partsList, totalPrice }: CreatePdfProps) {
                                 <p>Kilometragem: <strong>{item.kilometer}</strong></p>
                                 <p>Placa: <strong>{item.plate}</strong></p>
                             </div>
+                            <p>Observação: {item.observation}</p>
                         </li>
                     )}
                 </ul>

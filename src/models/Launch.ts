@@ -9,6 +9,7 @@ export default interface Launch {
     model: string
     kilometer: string
     plate: string
+    observation: string
     partsList: Part[]
 }
 
